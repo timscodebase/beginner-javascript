@@ -9,7 +9,52 @@
 </head>
 
 <body>
+  <script>
 
+    // function outer() {
+    //   const outerConst = 'Yay, I am the OUTER const!'
+
+    //   return function inner() {
+    //     const innerConst = 'Yay, I am the INNER const!'
+
+    //     console.group('Consts')
+    //     console.log(innerConst)
+    //     console.log(outerConst)
+    //     console.groupEnd('Consts')
+    //   }
+    // }
+
+    // const innerFunc = outer()
+
+    // innerFunc()
+
+    function createGreeting(greeting = '') {
+      const myGreeting = greeting.toUpperCase()
+      return function (name) {
+        return `${myGreeting}, ${name}`
+      }
+    }
+
+    const sayHello = createGreeting('Hello')
+    const sayHey = createGreeting('Hey')
+
+    console.log(sayHello('Tim'))
+    console.log(sayHello('Helen'))
+    console.log(sayHey('Tim'))
+    console.log(sayHey('Helen'))
+
+    function createGame(gameName) {
+      let score = 0
+      return function win() {
+        score++
+        return `Your ${gameName} score is... ${score}`
+      }
+    }
+
+    const soccerGame = createGame('soccer')
+    const footballGame = createGame('football')
+
+  </script>
 </body>
 
 </html>
